@@ -24,3 +24,7 @@ route::put('/Pelanggan/update/{id}','PelangganController@update') ->name('Pelang
 route::get('/Pelanggan/{id}/edit','PelangganController@edit') ->name('Pelanggan.edit');
 route::get('/Pelanggan/delete/{id}','PelangganController@destroy') ->name('Pelanggan.destroy');
  
+Auth::routes();
+
+Route::get('/home', 'PelangganController@beranda')->name('home');
+Route::get('/user', 'userController@beranda')->name('user');

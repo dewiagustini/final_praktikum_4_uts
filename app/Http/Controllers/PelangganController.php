@@ -1,12 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
 use App\Pelanggan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 class PelangganController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function($request, $next){
+            if(Gate::allows('admin')) return $next($request);
+            abort(403,'anda tidak memiliki cukup hak akses');
+        });
+    }
      /**
      * Display a listing of the resource.
      *

@@ -76,7 +76,7 @@
             </div>
         
       <div class="col-lg-12">
-      <a href="{{route('Pelanggan.create')}}">Tambah Data</a>
+      
       <table class="table table-bordered">
       <thead>
       <tr>
@@ -84,7 +84,7 @@
         <th>Nama</th>
         <th>No_tlpn</th>
         <th>Status</th>
-        <th>Aksi</th></tr>
+        
       </thead>
       <tbody>
         @foreach ($Pelanggan as $in=>$val)
@@ -93,14 +93,7 @@
           <td>{{$val->nama}}</td>
           <td>{{$val->no_tlpn}}</td>
           <td>{{$val->status}}</td>
-          <td>
-          <a href="{{route('Pelanggan.edit',$val->id)}}">update</a>
-          <form action="{{route('Pelanggan.destroy', $val->id)}}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit">delete</button>
-          </form>
-          </td></tr>
+          </tr>
         @endforeach
       </tbody>
       </table>

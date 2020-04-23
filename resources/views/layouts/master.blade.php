@@ -139,7 +139,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="/adminlte/img/user0.jpeg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Dewi Agustini</span>
+              <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -147,8 +147,8 @@
                 <img src="/adminlte/img/user0.jpeg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                {{ Auth::user()->name }}
+                  <small>PTI 18</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -172,7 +172,11 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"  class="btn btn-default btn-flat">{{ __('Logout') }}</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                 </div>
               </li>
             </ul>
@@ -198,19 +202,9 @@
           <img src="/adminlte/img/user0.jpeg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Dewi Agustini</p>
+          <p>{{ Auth::user()->name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
+        </div> 
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
